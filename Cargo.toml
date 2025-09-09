@@ -16,6 +16,33 @@ members = [
     "examples/reverse-service/common",
 ]
 
+[workspace.dependencies]
+anyhow = "1"
+async-stream = "0.3.6"
+axum = "0.8.4"
+bincode = "2.0.1"
+bytes = "1.10.1"
+chat-common = { path = "examples/chat/common" }
+eframe = { version = "0.32.0", default-features = false }
+egui = "0.32.0"
+egui-shortcuts = { path = "egui-shortcuts" }
+env_logger = "0.11.8"
+framework = { path = "framework" }
+futures = "0.3.31"
+log = "0.4"
+quic-session = { path = "quic-session" }
+reverse-common = { path = "examples/reverse-service/common" }
+serde = "1"
+serde_json = "1"
+subservice-common = { path = "examples/subservice/common" }
+tarpc = { git = "https://github.com/Masterchef365/tarpc.git", branch = "resolver-trouble", default-features = false }
+thiserror = "2.0.12"
+tokio = { version = "1.46", default-features = false }
+tokio-util = "0.7.15"
+tower-http = "0.6.6"
+url = "2.5.4"
+web-transport = "0.9.3"
+
 [patch.crates-io]
 #egui = { git = "https://github.com/emilk/egui.git", rev = "f4ed394" }
 #eframe = { git = "https://github.com/emilk/egui.git", rev = "f4ed394" }

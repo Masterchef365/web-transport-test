@@ -8,16 +8,16 @@ default = ["http"]
 http = ["axum", "tower-http"]
 
 [dependencies]
-chat-common = { path = "../common" }
+chat-common = { workspace = true }
 
-quic-session = { path = "../../../quic-session" }
-framework = { path = "../../../framework" }
+quic-session = { workspace = true }
+framework = { workspace = true }
 
-anyhow = "1"
-tokio = { version = "1.46", features = ["full"] }
-env_logger = "0.11.8"
-log = "0.4"
+anyhow = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+env_logger = { workspace = true }
+log = { workspace = true }
 #static-web-server = { version = "2.33.1", features = ["directory-listing"], optional = true }
 
-tower-http = { version = "0.6.6", features = ["fs"], optional = true }
-axum = { version = "0.8.4", optional = true }
+tower-http = { workspace = true, features = ["fs"], optional = true }
+axum = { workspace = true, optional = true }

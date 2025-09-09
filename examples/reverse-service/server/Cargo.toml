@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1"
-quic-session = { path = "../../../quic-session" }
-framework = { path = "../../../framework" }
-reverse-common = { path = "../common" }
-tokio = { version = "1.46", features = ["full"] }
+anyhow = { workspace = true }
+quic-session = { workspace = true }
+framework = { workspace = true }
+reverse-common = { workspace = true }
+tokio = { workspace = true, features = ["full"] }

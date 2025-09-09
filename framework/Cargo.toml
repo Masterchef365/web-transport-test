@@ -4,21 +4,21 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-web-transport = "0.9.3"
-serde = { version = "1", features = ["derive"] }
+web-transport = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
 #tarpc = { git = "https://github.com/Masterchef365/tarpc.git", branch = "resolver-trouble", default-features = false }
-tarpc = { git = "https://github.com/Masterchef365/tarpc.git", branch = "resolver-trouble", features = ["serde1"], default-features = false }
+tarpc = { workspace = true, features = ["serde1"] }
 #tarpc = { version = "0.34.0", features = ["serde1"], default-features = false }
-futures = "0.3.31"
-bincode = { version = "2.0.1", features = ["serde"] }
-bytes = "1.10.1"
-async-stream = "0.3.6"
-thiserror = "2.0.12"
+futures = { workspace = true }
+bincode = { workspace = true, features = ["serde"] }
+bytes = { workspace = true }
+async-stream = { workspace = true }
+thiserror = { workspace = true }
 
-tokio-util = { version = "0.7.15" }
-tokio = { version = "*", default-features = false, features = ["io-util"] }
-anyhow = "1"
-serde_json = "1"
+tokio-util = { workspace = true }
+tokio = { workspace = true, features = ["io-util"] }
+anyhow = { workspace = true }
+serde_json = { workspace = true }
 
 #polyfill-tokio-mem = { path = "../../polyfill-tokio-mem" }
 

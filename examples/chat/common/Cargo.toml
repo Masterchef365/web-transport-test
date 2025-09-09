@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-framework = { path = "../../../framework" }
-serde = { version = "1", features = ["derive"] }
-thiserror = "2.0.12"
-tarpc = { git = "https://github.com/Masterchef365/tarpc.git", branch = "resolver-trouble", features = ["serde1"], default-features = false }
+framework = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+thiserror = { workspace = true }
+tarpc = { workspace = true, features = ["serde1"] }
