@@ -13,7 +13,7 @@ url = { workspace = true }
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 tokio = { version = "1.46", features = ["full"] }
 quinn = "0.11.8"
-web-transport-quinn = "0.7.2"
+web-transport-quinn = "0.8.1"
 rustls-pemfile = "2.2.0"
 rustls = "0.23.29"
 
