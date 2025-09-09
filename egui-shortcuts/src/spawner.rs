@@ -34,6 +34,57 @@ impl<T: Send + 'static> SimpleSpawner<T> {
         }
     }
 
+    /// Spawns the task **only once**, requesting repaint on finish. Saves to temporary memory.
+    #[cfg(not(target_arch = "wasm32"))]
+    pub fn once<F>(&self, ui: &mut Ui, f: F) 
+    where
+        F: Future<Output = T> + Send + 'static,
+    {
+        if self.get_state(ui) != SpawnerState::Waiting {
+            return;
+        }
+        let ctx = ui.ctx().clone();
+
+        let id = self.id;
+        ui.ctx().memory_mut(move |w| {
+            w.data.insert_temp(
+                id,
+                Some(Arc::new(Mutex::new(spawn_promise(async move {
+                    let ret = f.await;
+                    ctx.request_repaint();
+                    ret
+                })))),
+            );
+        });
+    }
+
+    #[cfg(target_arch = "wasm32")]
+    pub fn once<F>(&self, ui: &mut Ui, f: F)
+    where
+        F: Future<Output = T> + 'static,
+        F::Output: Send,
+    {
+        if self.get_state(ui) != SpawnerState::Waiting {
+            return;
+        }
+        let ctx = ui.ctx().clone();
+
+        let id = self.id;
+        ui.ctx().memory_mut(move |w| {
+            w.data.insert_temp(
+                id,
+                Some(Arc::new(Mutex::new(spawn_promise(async move {
+                    let ret = f.await;
+                    ctx.request_repaint();
+                    ret
+                })))),
+            );
+        });
+    }
+
+
+
+
     pub fn get_state(&self, ui: &mut Ui) -> SpawnerState {
         let val = ui
             .ctx()
